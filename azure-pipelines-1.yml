@@ -1,22 +1,21 @@
 trigger:
-  - main
-
+  - main
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: 'ubuntu-latest'
 
 steps:
-  - checkout: self
-    persistCredentials: true
+  - checkout: self
+    persistCredentials: true
 
-  - script: |
-      az bicep build --file main.bicep --stdout
-    displayName: 'BICEP Validation'
+  - script: |
+      az bicep build --file BicepTemplate.bicep --stdout
+    displayName: 'BICEP Validation'
 
-  - task: AzureCLI@2
-    inputs:
-      azureSubscription: 'Azure Pass - Sponsorship'
-      scriptType: 'bash'
-      scriptLocation: 'inlineScript'
-      inlineScript: |
-        az deployment sub create --location eastus --template-file main.bicep
-    displayName: 'Deploy to Azure'
+  - task: AzureCLI@2
+    inputs:
+      azureSubscription: 'myconnection'
+      scriptType: 'bash'
+      scriptLocation: 'inlineScript'
+      inlineScript: |
+        az deployment group create  --resource-group Bicep --template-file BicepTemplate.bicep
+    displayName: 'Deploy to Azure'
