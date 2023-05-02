@@ -23,6 +23,6 @@ steps:
       scriptType: 'bash'
       scriptLocation: 'inlineScript'
       inlineScript: |
-        az deployment sub create --location eastus --template-file bicep.bicep
+        az deployment group create --resource-group Biceptemplate --template-file bicep.bicep
     displayName: 'Deploy to Azure'
 
