@@ -1,0 +1,22 @@
+trigger:
+  - main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+  - checkout: self
+    persistCredentials: true
+
+  - script: |
+      az bicep build --file main.bicep --stdout
+    displayName: 'BICEP Validation'
+
+  - task: AzureCLI@2
+    inputs:
+      azureSubscription: 'Azure Pass - Sponsorship'
+      scriptType: 'bash'
+      scriptLocation: 'inlineScript'
+      inlineScript: |
+        az deployment sub create --location eastus --template-file main.bicep
+    displayName: 'Deploy to Azure'
