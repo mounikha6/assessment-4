@@ -14,7 +14,7 @@ steps:
     persistCredentials: true
 
   - script: |
-      az bicep build --file main.bicep --stdout
+      az bicep build --file bicep.bicep --stdout
     displayName: 'BICEP Validation'
 
   - task: AzureCLI@2
@@ -23,6 +23,6 @@ steps:
       scriptType: 'bash'
       scriptLocation: 'inlineScript'
       inlineScript: |
-        az deployment sub create --location eastus --template-file main.bicep
+        az deployment sub create --location eastus --template-file bicep.bicep
     displayName: 'Deploy to Azure'
 
