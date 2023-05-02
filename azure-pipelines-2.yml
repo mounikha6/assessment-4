@@ -11,7 +11,7 @@ steps:
   - checkout: self
     persistCredentials: true
   - script: |
-      az bicep build --file main.bicep --stdout
+      az bicep build --file main.bicep
     displayName: 'BICEP Validation'
   - task: AzureCLI@2
     inputs:
