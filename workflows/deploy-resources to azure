@@ -17,4 +17,4 @@ jobs:
         az bicep validate --file bicep.bicep
     - name: Deploy resources to Azure
       run: |
-        az deployment group create --resource-group assessrg4 --template-file bicep.bicep --mode Incremental
+        az deployment group create --resource-group BiceptemplateGIT --template-file bicep.bicep --mode Incremental
