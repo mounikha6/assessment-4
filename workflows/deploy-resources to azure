@@ -11,7 +11,7 @@ jobs:
     - name: Install Azure CLI
       uses: azure/login@v1
       with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
+        creds: ${{ secrets.ASSESSMENT4SECRET }}
     - name: Validate Bicep file
       run: |
         az bicep validate --file bicep.bicep
