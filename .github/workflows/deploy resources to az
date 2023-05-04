@@ -19,5 +19,5 @@ jobs:
       with:
         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
         resourceGroupName: BiceptemplateGIT
-        template:bicep.bicep
+        template:./bicep.bicep
         failOnStdErr: false
